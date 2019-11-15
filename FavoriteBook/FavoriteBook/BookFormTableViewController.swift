@@ -15,6 +15,7 @@ class BookFormTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateView() 
     }
     
     func updateView() {

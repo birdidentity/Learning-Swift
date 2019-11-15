@@ -44,6 +44,12 @@ class BookTableViewController: UITableViewController {
         return cell
     }
     
+    // MARK: - Removing books
+    
+//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+//        guard let tableView.selected
+//    }
+    
     // MARK: - Navigation
     
     @IBAction func prepareForUnwind(segue: UIStoryboardSegue) {
@@ -60,11 +66,11 @@ class BookTableViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let bookFormViewController = segue.destination as? BookFormTableViewController else {return}
+        guard let bookFormTableViewController = segue.destination as? BookFormTableViewController else {return}
         
         if let indexPath = tableView.indexPathForSelectedRow,
             segue.identifier == PropertyKeys.editBookSegue {
-            bookFormViewController.book = books[indexPath.row]
+            bookFormTableViewController.book = books[indexPath.row]
         }
     }
     
