@@ -47,7 +47,7 @@ class BookTableViewController: UITableViewController {
     // MARK: - Navigation
     
     @IBAction func prepareForUnwind(segue: UIStoryboardSegue) {
-        guard let source = segue.source as? BookFormViewController,
+        guard let source = segue.source as? BookFormTableViewController,
             let book = source.book else {return}
         
         if let indexPath = tableView.indexPathForSelectedRow {
@@ -60,7 +60,7 @@ class BookTableViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let bookFormViewController = segue.destination as? BookFormViewController else {return}
+        guard let bookFormViewController = segue.destination as? BookFormTableViewController else {return}
         
         if let indexPath = tableView.indexPathForSelectedRow,
             segue.identifier == PropertyKeys.editBookSegue {
