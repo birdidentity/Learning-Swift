@@ -33,6 +33,15 @@ class EmojiTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
+    // MARK: - Edit button
+    
+    @IBAction func editButtonTapped(_ sender: UIBarButtonItem) {
+        let tableViewEditingMode = tableView.isEditing
+        
+        tableView.setEditing(!tableViewEditingMode, animated: true)
+    }
+    
 
     // MARK: - Table view data source
     
@@ -53,10 +62,26 @@ class EmojiTableViewController: UITableViewController {
         
         let emoji = emojis[indexPath.row]
         
+        cell.showsReorderControl = true
         cell.textLabel?.text = "\(emoji.symbol) - \(emoji.name)"
         cell.detailTextLabel?.text = emoji.description
 
         return cell
+    }
+    
+    // MARK: - Delegate methods implementation
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let emoji = emojis[indexPath.row]
+        print("\(emoji.symbol) - \(emoji.name)")
+    }
+    
+    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let movedEmoji = emojis.remove(at: sourceIndexPath.row)
+        
+        emojis.insert(movedEmoji, at: destinationIndexPath.row)
+        
+        tableView.reloadData()
     }
     
 
