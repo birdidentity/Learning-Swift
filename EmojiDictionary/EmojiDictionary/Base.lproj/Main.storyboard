@@ -6,6 +6,53 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Edit Emoji-->
+        <scene sceneID="5rg-Ex-xgN">
+            <objects>
+                <tableViewController id="eQR-x8-m9n" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="o8f-PN-fyq">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="XuB-uc-iEB">
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XuB-uc-iEB" id="3OI-cl-dY2">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="eQR-x8-m9n" id="hGY-oG-BrN"/>
+                            <outlet property="delegate" destination="eQR-x8-m9n" id="Si9-Fo-Sz9"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Edit Emoji" id="DgU-gX-yRu">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="GcS-Os-1Mw"/>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ftQ-O0-ffe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="516" y="-610"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="f9P-Up-PlL">
+            <objects>
+                <navigationController modalPresentationStyle="fullScreen" id="zOE-4s-Ls6" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="0TU-a8-cB9">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="eQR-x8-m9n" kind="relationship" relationship="rootViewController" id="8eg-Si-qf7"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aZs-sI-A7L" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-401" y="-610"/>
+        </scene>
         <!--Emoji Dictionary-->
         <scene sceneID="Hn6-jw-7y4">
             <objects>
@@ -62,6 +109,7 @@
                                     <outlet property="descriptionLabel" destination="Ebf-ln-nkE" id="MXn-em-mTx"/>
                                     <outlet property="nameLabel" destination="IcK-cd-Q4P" id="mQR-la-OhM"/>
                                     <outlet property="symbolLabel" destination="etk-ov-QvP" id="riL-cq-UBG"/>
+                                    <segue destination="zOE-4s-Ls6" kind="presentation" identifier="EditEmoji" id="f7K-Sd-yhJ"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -70,10 +118,15 @@
                             <outlet property="delegate" destination="RjA-ay-p7K" id="doX-yb-CxI"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Emoji Dictionary" id="r13-58-MRd">
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="MgF-tm-uGV">
+                    <navigationItem key="navigationItem" title="Emoji Dictionary" largeTitleDisplayMode="always" id="r13-58-MRd">
+                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="MgF-tm-uGV">
                             <connections>
                                 <action selector="editButtonTapped:" destination="RjA-ay-p7K" id="H99-ni-FQx"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Wem-qb-FBv">
+                            <connections>
+                                <segue destination="zOE-4s-Ls6" kind="presentation" id="LnN-Wt-QM2"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -99,4 +152,7 @@
             <point key="canvasLocation" x="-403" y="41"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="f7K-Sd-yhJ"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -77,11 +77,6 @@ class EmojiTableViewController: UITableViewController {
     
     // MARK: - Delegate methods implementation
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let emoji = emojis[indexPath.row]
-        print("\(emoji.symbol) - \(emoji.name)")
-    }
-    
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         let movedEmoji = emojis.remove(at: sourceIndexPath.row)
         
